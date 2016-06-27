@@ -39,6 +39,9 @@
         <div class="navbar-header">
             <a href="" class="navbar-brand">musical.ly pop</a>
         </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a id="auth" href="/login.html">login</a></li>
+        </ul>
     </div>
 </div>
 
@@ -151,7 +154,8 @@
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             // User is signed in.
-            $('.ctr').append('<a href="./new.html">new</a>');
+            $('#auth').attr('href', './new.html').html('<img src="'+user.photoURL+'" alt="">');
+
         } else {
             // No user is signed in.
         }
