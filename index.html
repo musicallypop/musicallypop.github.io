@@ -11,6 +11,7 @@
     <meta name="author" content="musicallypop">
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Armata' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/0.4.0/firebase-ui-auth.css" />
     <style>
         iframe{
             width: 100%;
@@ -19,6 +20,11 @@
         .navbar-default  .navbar-brand {
             font-family: 'Armata', sans-serif;
             color: rgb(255, 0, 76);
+        }
+        .text-overflow {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -40,76 +46,79 @@
 
 <div class="container" style="padding-top: 20px">
 
-    <div class="row">
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/LjZ5tC4Nchw" frameborder="0" allowfullscreen></iframe>
-            <p>musical.ly wmag | LisaandLena </p>
-        </div>
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/WIixf0b5uKU" frameborder="0" allowfullscreen></iframe>
-            <p>The Best musical.ly Compilation of April 2016</p>
-        </div>
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/rHPF67Wwp4o" frameborder="0" allowfullscreen></iframe>
-            <p>How To Get a Feature | Taylor Skeens</p>
-        </div>
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/HMtiDFZE8bA" frameborder="0" allowfullscreen></iframe>
-            <p> ♫ teenvogue - original sound | 💕Karin Lujan💕 </p>
-        </div>
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/1dtwpcfuLtQ" frameborder="0" allowfullscreen></iframe>
-            <p>Musical.ly | Baby Ariel, Kristen Hancher, & Loren Beech</p>
-        </div>
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/hMdMlZ8TugY" frameborder="0" allowfullscreen></iframe>
-            <p>Best Musical.ly Dallas, SiAngie Twins, Mackenzie Ziegler</p>
-        </div>
+    <div class="row" id="lists">
 
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/XicbYsLffvY" frameborder="0" allowfullscreen></iframe>
-            <p>Annie Bratayley The best Compilation Musical.ly app</p>
-        </div>
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/LYfWMrVubRQ" frameborder="0" allowfullscreen></iframe>
-            <p>Hayley The best Compilation Musical.ly app</p>
-        </div>
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/4ZxXSAWKAjg" frameborder="0" allowfullscreen></iframe>
-            <p>Annie Bratayley VS Jenna Ortega l Lip Sync Battle June 2016</p>
-        </div>
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/JC02RFkLApw" frameborder="0" allowfullscreen></iframe>
-            <p>Musical.ly | Annie Bratayley, Lisa and Lena, Johnny Orlando</p>
-        </div>
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/Aqak0yYHNEQ" frameborder="0" allowfullscreen></iframe>
-            <p>a</p>
-        </div>
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/C130mXUipxA" frameborder="0" allowfullscreen></iframe>
-            <p>a</p>
-        </div>
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/vSeNIuLdS2s" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/4ZxXSAWKAjg" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/g8U5F-qQ8ss" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="col-md-4">
-            <iframe height="315" src="https://www.youtube.com/embed/tvzzMfSdvgo" frameborder="0" allowfullscreen></iframe>
-        </div>
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/LjZ5tC4Nchw" frameborder="0" allowfullscreen></iframe>-->
+            <!--<p>musical.ly wmag | LisaandLena </p>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/WIixf0b5uKU" frameborder="0" allowfullscreen></iframe>-->
+            <!--<p>The Best musical.ly Compilation of April 2016</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/rHPF67Wwp4o" frameborder="0" allowfullscreen></iframe>-->
+            <!--<p>How To Get a Feature | Taylor Skeens</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/HMtiDFZE8bA" frameborder="0" allowfullscreen></iframe>-->
+            <!--<p> ♫ teenvogue - original sound | 💕Karin Lujan💕 </p>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/1dtwpcfuLtQ" frameborder="0" allowfullscreen></iframe>-->
+            <!--<p>Musical.ly | Baby Ariel, Kristen Hancher, & Loren Beech</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/hMdMlZ8TugY" frameborder="0" allowfullscreen></iframe>-->
+            <!--<p>Best Musical.ly Dallas, SiAngie Twins, Mackenzie Ziegler</p>-->
+        <!--</div>-->
+
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/XicbYsLffvY" frameborder="0" allowfullscreen></iframe>-->
+            <!--<p>Annie Bratayley The best Compilation Musical.ly app</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/LYfWMrVubRQ" frameborder="0" allowfullscreen></iframe>-->
+            <!--<p>Hayley The best Compilation Musical.ly app</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/4ZxXSAWKAjg" frameborder="0" allowfullscreen></iframe>-->
+            <!--<p>Annie Bratayley VS Jenna Ortega l Lip Sync Battle June 2016</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/JC02RFkLApw" frameborder="0" allowfullscreen></iframe>-->
+            <!--<p>Musical.ly | Annie Bratayley, Lisa and Lena, Johnny Orlando</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/Aqak0yYHNEQ" frameborder="0" allowfullscreen></iframe>-->
+            <!--<p>a</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/C130mXUipxA" frameborder="0" allowfullscreen></iframe>-->
+            <!--<p>a</p>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/vSeNIuLdS2s" frameborder="0" allowfullscreen></iframe>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/4ZxXSAWKAjg" frameborder="0" allowfullscreen></iframe>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/g8U5F-qQ8ss" frameborder="0" allowfullscreen></iframe>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<iframe height="315" src="https://www.youtube.com/embed/tvzzMfSdvgo" frameborder="0" allowfullscreen></iframe>-->
+        <!--</div>-->
 
     </div>
 
-    <p>
-        there u can get the most pop on musical.ly, u can find how to became pop on musical.ly, more infomation will comming, web site is on the way
-    </p>
+    <!--<p>-->
+        <!--there u can get the most pop on musical.ly, u can find how to became pop on musical.ly, more infomation will comming, web site is on the way-->
+    <!--</p>-->
 
+<p class="ctr">
 
+</p>
 </div>
 
 
@@ -124,4 +133,72 @@
     ga('send', 'pageview');
 
 </script>
+<!--<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>-->
+<script src="https://www.gstatic.com/firebasejs/3.0.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.0.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.0.5/firebase-database.js"></script>
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCdtr4BML_jsB_4BDR_YSomcnIMIB3Eq7c",
+        authDomain: "musicallypop.firebaseapp.com",
+        databaseURL: "https://musicallypop.firebaseio.com",
+        storageBucket: "musicallypop.appspot.com",
+    };
+    var app = firebase.initializeApp(config);
+    var auth = app.auth();
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            // User is signed in.
+            $('.ctr').append('<a href="./new.html">new</a>');
+        } else {
+            // No user is signed in.
+        }
+    });
+    var D = {};
+    firebase.database().ref('musical').orderByChild('d').on('value',function(d){
+        var lists = d.val();
+        var html = '';
+        D = d;
+//        console.log(lists);
+        d.forEach(function (l) {
+//            console.log(l.val());
+            var ll = l.val();
+            html += '<div class="col-sm-6 col-md-4" id="'+ll.id+'">' +
+                    '<div class="thumbnail">' +
+                    '<img src="https://i.ytimg.com/vi/'+ll.id+'/hqdefault.jpg" alt="">' +
+                    '<div class="caption">' +
+                    '<p class="text-overflow">'+ll.title+'</p>' +
+                    '<p class="clearfix">' +
+                    '<a href="./detail.html#/'+ll.id+'" class="btn btn-primary detail pull-right" role="button">Watch</a>' +
+                    '<a href="#" class="btn btn-default like pull-left" role="button">like</a>' +
+                    '</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+        });
+//        for(id in lists){
+//            html += '<div class="col-sm-6 col-md-4" id="'+lists[id].id+'">' +
+//                    '<div class="thumbnail">' +
+//                    '<img src="https://i.ytimg.com/vi/'+lists[id].id+'/hqdefault.jpg" alt="">' +
+//                    '<div class="caption">' +
+//                    '<p class="text-overflow">'+lists[id].title+'</p>' +
+//                    '<p class="clearfix">' +
+//                    '<a href="./detail.html#/'+lists[id].id+'" class="btn btn-primary detail pull-right" role="button">Watch</a>' +
+//                    '<a href="#" class="btn btn-default like pull-left" role="button">like</a>' +
+//                    '</p>' +
+//                    '</div>' +
+//                    '</div>' +
+//                    '</div>';
+//        }
+//        console.log(html);
+        $('#lists').html(html);
+    });
+
+</script>
+</body>
 </html>
+
+
+

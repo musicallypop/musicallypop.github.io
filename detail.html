@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Musical.ly Pop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="discription" content=" there u can get the most pop on musical.ly, u can find how to became pop on musical.ly, more infomation will comming, web site is on the way">
+    <meta name="keywords" content="musicallypop,musically,musical.ly">
+    <meta name="author" content="musicallypop">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Armata' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/0.4.0/firebase-ui-auth.css" />
+    <style>
+        iframe{
+            width: 100%;
+            max-width: 100%;
+        }
+        .navbar-default  .navbar-brand {
+            font-family: 'Armata', sans-serif;
+            color: rgb(255, 0, 76);
+        }
+        .text-overflow {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<!--[if lt IE 9]>
+<div>
+    <h1>your browser is tooooooooo ooooooooooold</h1>
+</div>
+<![endif]-->
+<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="./" class="navbar-brand">musical.ly pop</a>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container" style="padding-top: 20px">
+
+    <div class="row" id="lists">
+        
+    </div>
+
+    <p>
+        there u can get the most pop on musical.ly, u can find how to became pop on musical.ly, more infomation will comming, web site is on the way
+    </p>
+
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-79833284-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<!--<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>-->
+<script src="https://www.gstatic.com/firebasejs/3.0.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.0.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.0.5/firebase-database.js"></script>
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCdtr4BML_jsB_4BDR_YSomcnIMIB3Eq7c",
+        authDomain: "musicallypop.firebaseapp.com",
+        databaseURL: "https://musicallypop.firebaseio.com",
+        storageBucket: "musicallypop.appspot.com",
+    };
+    var app = firebase.initializeApp(config);
+    var auth = app.auth();
+    var _id = location.hash.replace('#/','');
+    firebase.database().ref('musical/'+_id).on('value',function(d){
+        var lists = d.val();
+        var html = '';
+//        for(id in lists){
+            html += '<div class="col-md-12" id="'+lists.id+'">' +
+                    '<div class="thumbnail">' +
+                    '<iframe height="415" src="https://www.youtube.com/embed/'+lists.id+'" frameborder="0" allowfullscreen></iframe>' +
+                    '<div class="caption">' +
+                    '<p class="text-overflow">'+lists.title+'</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+//        }
+//        console.log(html);
+        $('#lists').html(html);
+    });
+
+</script>
+</body>
+</html>
