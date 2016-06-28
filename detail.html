@@ -49,10 +49,7 @@
     <div class="row" id="lists">
         
     </div>
-
-    <p>
-        there u can get the most pop on musical.ly, u can find how to became pop on musical.ly, more infomation will comming, web site is on the way
-    </p>
+    
 
 
 </div>
@@ -91,7 +88,7 @@
 //        for(id in lists){
             html += '<div class="col-md-12" id="'+lists.id+'">' +
                     '<div class="thumbnail">' +
-                    '<iframe height="415" src="https://www.youtube.com/embed/'+lists.id+'" frameborder="0" allowfullscreen></iframe>' +
+                    '<iframe id="ytplayer" type="text/html" width="720" height="405" src="https://www.youtube.com/embed/'+lists.id+'?autoplay=1&controls=0&fs=0&loop=1&rel=0&showinfo=0&color=white&theme=light" frameborder="0" allowfullscreen>' +
                     '<div class="caption">' +
                     '<p class="text-overflow">'+lists.title+'</p>' +
                     '</div>' +
