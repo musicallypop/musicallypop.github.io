@@ -109,7 +109,7 @@
     };
     var app = firebase.initializeApp(config);
     var auth = app.auth();
-    var _id = location.hash.replace('?id=','');
+    var _id = location.search.replace('?id=','');
     firebase.database().ref('musical/'+_id).on('value',function(d){
         var lists = d.val();
         var html = '';
