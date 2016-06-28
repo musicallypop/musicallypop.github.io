@@ -161,7 +161,7 @@
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             // User is signed in.
-            $('#auth').attr('href', './new.html').html('<img height="30" width="30" src="'+user.photoURL+'" alt="">');
+            $('#auth').attr('href', './new.html').html('<img height="30" width="30" src="'+user.photoURL.replace('http','https')+'" alt="">');
 
         } else {
             // No user is signed in.
