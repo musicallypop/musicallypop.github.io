@@ -10,18 +10,20 @@
     <meta name="keywords" content="musicallypop,musically,musical.ly">
     <meta name="author" content="musicallypop">
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Armata' rel='stylesheet' type='text/css'>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/0.4.0/firebase-ui-auth.css" />
-    <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+    <!--<link href='https://fonts.googleapis.com/css?family=Armata' rel='stylesheet' type='text/css'>-->
+    <!--<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/0.4.0/firebase-ui-auth.css" />-->
+    <!--<link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>-->
+    <link href='https://fonts.googleapis.com/css?family=Didact+Gothic' rel='stylesheet' type='text/css'>
     <style>
         iframe{
             width: 100%;
             max-width: 100%;
         }
         .navbar-default  .navbar-brand {
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Didact Gothic', sans-serif;
+            /*font-family: 'Dancing Script', cursive;*/
             /*font-family: 'Armata', sans-serif;*/
-            color: rgb(255, 0, 76);
+            color: #ff0f50;
         }
         .navbar-default{
             border-top: #ff0f50 solid 3px;
@@ -88,6 +90,20 @@
 
 <script>
     // Initialize Firebase
+    var getUrlParameter = function getUrlParameter(url,sParam) {
+        var sPageURL = decodeURIComponent(url.split('?')[1]),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
     var config = {
         apiKey: "AIzaSyCdtr4BML_jsB_4BDR_YSomcnIMIB3Eq7c",
         authDomain: "musicallypop.firebaseapp.com",
@@ -125,8 +141,8 @@
         });
     function writeNewPost() {
 
-        var _a = $('#youtubeid').val().split('?');
-        var _id = _a[1].replace('v=','');
+//        var _a = $('#youtubeid').val().split('?');
+        var _id = getUrlParameter($('#youtubeid').val(),'v');
         console.log(_id);
         var title = $('#title').val();
         firebase.database().ref('musical/' + _id).set({
