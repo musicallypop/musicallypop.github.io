@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Armata' rel='stylesheet' type='text/css'>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/0.4.0/firebase-ui-auth.css" />
+    <style>
+        .navbar-default{
+            border-top: #ff0f50 solid 3px;
+        }
+    </style>
 </head>
 <body>
 <!--[if lt IE 9]>
@@ -104,7 +109,10 @@
             console.log(error);
         });
     function writeNewPost() {
-        var _id = $('#youtubeid').val();
+
+        var _a = $('#youtubeid').val().split('/');
+        var _id = _a[_a.length-1];
+        console.log(_id);
         var title = $('#title').val();
         firebase.database().ref('musical/' + _id).set({
             id: _id,
