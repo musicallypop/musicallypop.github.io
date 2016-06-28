@@ -142,7 +142,16 @@
     function writeNewPost() {
 
 //        var _a = $('#youtubeid').val().split('?');
-        var _id = getUrlParameter($('#youtubeid').val(),'v');
+        var url = $('#youtubeid').val();
+        var _id = '';
+        if(url.indexOf('youtube.com')+1){
+            _id = getUrlParameter(url, 'v');
+        }else if(url.indexOf('youtu.be')+1){
+            var _a = $('#youtubeid').val().split('/');
+            _id = _a[_a.length-1];
+        }else{
+            return alert('not youtub url');
+        }
         console.log(_id);
         var title = $('#title').val();
         firebase.database().ref('musical/' + _id).set({
