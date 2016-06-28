@@ -87,12 +87,12 @@
         var html = '';
 //        for(id in lists){
             html += '<div class="col-md-12" id="'+lists.id+'">' +
-                    '<div><iframe id="ytplayer" type="text/html"  width="720" height="405" src="https://www.youtube.com/embed/'+lists.id+'?autoplay=1&controls=0&fs=0&loop=1&rel=0&showinfo=0&color=white&theme=light" frameborder="0" allowfullscreen></div>' +
+                    '<div><iframe id="ytplayer" type="text/html"  width="720" height="405" src="https://www.youtube.com/embed/'+lists.id+'?autoplay=1&controls=0&fs=0&loop=1&rel=0&showinfo=0&color=white&theme=light" frameborder="0" allowfullscreen></iframe></div>' +
                     '<div class="caption">' +
-                    '<p class="text-overflow">'+lists.title+'</p>' +
+                    '<p>'+lists.title+'</p>' +
                     '</div></div>';
 //        }
-//        console.log(html);
+        console.log(html);
         $('#lists').html(html);
     });
 
